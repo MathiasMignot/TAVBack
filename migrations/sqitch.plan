@@ -1,0 +1,6 @@
+%syntax-version=1.0.0
+%project=TAT
+
+init 2023-11-20T18:09:39Z ,,, <matdev@PCMathias> # first migration for create table
+sqlFunctions 2023-11-20T18:18:12Z ,,, <matdev@PCMathias> # insert function for table
+addingUser 2024-01-23T17:34:29Z ,,, <matdev@PCMathias> # adding a unique user in database
