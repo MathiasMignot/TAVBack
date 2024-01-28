@@ -54,11 +54,11 @@ class CoreController {
     if(process.env.NODE_ENV === "production"){
       request.body.document = path.join(__dirname,`../../public/${request.body.document}`)
       console.log(request.body.document) 
-      const result = await this.constructor.dataMapper.createOne(request.body);
-      const responseObject = { status: 'success', data: { } };
-      responseObject.data[this.constructor.dataName.one] = result;
-
+      
     }
+    const result = await this.constructor.dataMapper.createOne(request.body);
+    const responseObject = { status: 'success', data: { } };
+    responseObject.data[this.constructor.dataName.one] = result;
     response.json(result);
   }
 
