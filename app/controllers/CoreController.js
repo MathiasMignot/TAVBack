@@ -1,5 +1,6 @@
 const debug = require('debug')('TAT:controllers:core');
-
+const AWS = require("aws-sdk");
+const s3 = new AWS.S3()
 const path = require('path');
 
 const jwt = require('jsonwebtoken');
@@ -52,7 +53,13 @@ class CoreController {
       request.body.document = `http://localhost:3000/${request.body.document}`
     }
     if(process.env.NODE_ENV === "production"){
-      request.body.document = path.join(__dirname,`../../public/${request.body.document}`)
+      console.log(req.body)
+      await s3.putObject({
+        
+        Body: JSON.stringify({key:"value"}),
+        Bucket: "cyclic-comfortable-vest-elk-eu-west-3",
+        Key: `some_files/${request.body.document}.json`,
+    }).promise()
       console.log(request.body.document) 
       
     }
